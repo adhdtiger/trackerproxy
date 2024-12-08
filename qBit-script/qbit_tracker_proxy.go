@@ -83,7 +83,7 @@ func update_all_torrents() {
       return
     }
     for _, tracker := range trackers {
-      for j, f := range from {
+      for _, f := range from {
         if strings.HasPrefix(tracker.URL, f) {
           missing_tracker[i].Tracker = tracker.URL
           break
