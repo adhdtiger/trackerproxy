@@ -1,3 +1,5 @@
+# shellcheck disable=all
+#haproxy config file
 global
         log /dev/log    local0
         log /dev/log    local1 notice
@@ -26,18 +28,5 @@ defaults
 
 # Create the listener
 frontend http-in
-        bind *:80
+        bind :80
         default_backend MAM
-
-backend MAM
-        mode http
-        option http-keep-alive
-        option persist
-        http-reuse always
-
-        stats enable
-        stats uri /stats
-        stats refresh 10s
-
-        balance roundrobin
-        http-request set-header Host t.myanonamouse.net
