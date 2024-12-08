@@ -4,8 +4,8 @@
 rm ./haproxy.cfg
 # rm /etc/haproxy/haproxy.cfg
 
-HOSTS="t.myanonamouse.net tracker.tleechreload.org tracker.torrentleech.org"
-PREFIXES="mam tlreload tleech"
+HOSTS="t.myanonamouse.net tracker.foo.org tracker.bar.org"
+PREFIXES="mam foo bar"
 
 while :
 do
