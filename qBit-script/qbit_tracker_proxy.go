@@ -14,8 +14,11 @@ import (
 
 const (
   base = "http://localhost:8080"
-  from = []string{"https://t.myanonamouse.net/tracker.php", "https://tracker.tleechreload.org", "https://tracker.torrentleech.org"}
-  to   = []string{"http://localhost/mam/tracker.php", "http://localhost/treload", "http://localhost/tleech"}
+)
+
+var (
+  from = []string{"https://t.myanonamouse.net/tracker.php", "https://tracker.foo.org", "https://tracker.bar.org"}
+  to   = []string{"http://localhost/mam/tracker.php", "http://localhost/foo", "http://localhost/bar"}
 )
 
 type Torrent struct {
