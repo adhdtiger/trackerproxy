@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Force this to start haproxy on first run.
-rm /etc/haproxy/haproxy.cfg
+# rm /etc/haproxy/haproxy.cfg
 
 while :
 do
