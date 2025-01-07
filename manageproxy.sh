@@ -19,7 +19,7 @@ do
   done
 
   # Process each host
-  set -- ${PREFIXES}  # Set positional parameters for parallel iteration
+  set -- "${PREFIXES}"  # Set positional parameters for parallel iteration
   for tracker in ${HOSTS}; do
     PREFIX=$1; shift  # Get corresponding prefix
     echo Looking up "${tracker}"
