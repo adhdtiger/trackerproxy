@@ -1,0 +1,31 @@
+---
+name: trackerproxy
+
+services:
+  trackerproxy:
+    image: ${TRACKERPROXY_IMAGE}:${TRACKERPROXY_IMAGE_TAG}
+    hostname: trackerproxy
+    network_mode: service:qbit-nox
+    volumes:
+      - ${APPDATA_DIR}/trackerproxy:/config
+      - ${SCRIPTS_DIR}/trackerproxy:/scripts
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: ${TZ}
+      UMASK: ${UMASK}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${TRACKERPROXY_APP_PORT}/"]
+      start_period: 30s
+      interval: 30s
+      retries: 3
+      timeout: 10s
+    restart: ${RESTART_POLICY}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.trackerproxy-rtr.tls=true"
+      - "traefik.http.routers.trackerproxy-rtr.entrypoints=websecure"
+      - "traefik.http.routers.trackerproxy-rtr.rule=Host(`${TRACKERPROXY_DOMAIN_NAME}`)"
+      - "traefik.http.routers.trackerproxy-rtr.middlewares=chain-authentik@file"
+      - "traefik.http.routers.trackerproxy-rtr.service=trackerproxy-svc"
+      - "traefik.http.services.trackerproxy-svc.loadbalancer.server.port=${TRACKERPROXY_APP_PORT}" 
