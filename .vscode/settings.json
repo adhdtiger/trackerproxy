@@ -1,3 +1,7 @@
 {
-  "cSpell.words": ["EXISTINGMD", "NEWMD"]
+  "cSpell.words": [
+    "EXISTINGMD",
+    "NEWMD"
+  ],
+  "git.enabled": true
 }
